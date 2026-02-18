@@ -37,18 +37,49 @@ preprocessing and Logistic Regression.
 - Dataset not included in repository (ignored via `.gitignore`)
 
 ---
+We compared raw pixel features with HOG features on Apple vs Banana dataset.
 
 ## ✅ Results
-- Accuracy: **100%**
-- Confusion Matrix:
-[[63 0]
-[ 0 61]]
+Training time: 0.11 seconds
+Accuracy: 1.0
+Confusion Matrix: 
+[[63  0]
+ [ 0 61]]
+ 
+---- RAW PIXELS ----
+Feature length: 16384
+Confusion matrix:
+ [[63  0]
+ [ 0 61]]
+Training time: 0.16 seconds
+Accuracy: 1.0
 
+---- HOG FEATURES ----
+Feature length: 8100
+Accuracy: 1.0
+Training time: 0.1598665714263916
+Confusion matrix:
+ [[63  0]
+ [ 0 61]]
+
+---
+🔎 Observations
+
+- Both Raw Pixel and HOG features achieved perfect classification accuracy (100%) on this dataset.
+- HOG reduced feature dimensionality by approximately 50% (16384 → 8100).
+- Training time for HOG was slightly higher despite lower dimensionality. This is likely due to:
+- Additional feature computation overhead
+- Dataset simplicity allowing raw pixels to perform equally well
+- The dataset appears to be linearly separable under both representations due to:
+   Clean background
+   Controlled lighting
+   Distinct object shapes
+
+Although accuracy is identical, HOG provides a more structured and illumination-robust representation compared to raw intensity-based features.
 
 ---
 
 ## 🚀 Future Improvements
-- Use HOG features
 - Try SVM classifier
 - Test on real-world images
 - Extend to multi-class classification
